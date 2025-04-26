@@ -1,0 +1,288 @@
+:root {
+  --primary: #000;
+  --accent: #0033cc;
+  --muted: #666; /* darker grey for better contrast */
+}
+
+body {
+  margin: 0;
+  background-color: #fff;
+  color: var(--primary);
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  line-height: 1.8;
+  letter-spacing: 0.3px;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem; /* reduce from 5rem */
+}
+
+#main-header {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+#main-header.loaded {
+  opacity: 1;
+}
+
+.name-line {
+  font-size: 3.5rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.motto {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--muted);
+  margin-top: 1rem;
+  margin-bottom: 0.75rem; /* tighten spacing below */
+}
+
+nav {
+  margin: 0.75rem 0; /* balances above and below ribbon */
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-block; /* makes it center better with even breathing room */
+}
+
+nav a {
+  margin: 0 0.6rem;
+  color: var(--primary);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px; /* breathing room for the underline */
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  background-color: var(--muted); /* <-- now using your muted grey */
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/***** General Links in Body Text with Animated Underline *****/
+main a, section a, p a {
+  position: relative;
+  color: var(--primary);
+  text-decoration: none;
+  padding-bottom: 2px;
+}
+
+main a::after, section a::after, p a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  background-color: var(--muted);
+  transition: width 0.3s ease;
+}
+
+main a:hover::after, section a:hover::after, p a:hover::after {
+  width: 100%;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--primary);
+  margin: 0.75rem 0 2rem 0; /* tight above, roomy below */
+}
+
+.profile-image {
+  float: right;
+  width: 180px;
+  height: auto;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+section {
+  margin-bottom: 2rem;
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+  clear: both;
+}
+
+footer {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+  border-top: 1px solid #ccc;
+  padding-top: 2rem;
+}
+
+.paper-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  text-align: left;
+  color: var(--primary);
+  position: relative;
+}
+
+.paper-title.open::after {
+  content: " –";
+  animation: fadeIn 0.4s ease forwards;
+}
+
+
+.paper-title::after {
+  content: " +";
+  font-weight: normal;
+  color: var(--muted);
+  display: inline-block;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.paper-title.open::after {
+  content: " –";
+  opacity: 1;
+}
+
+
+.paper-details {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.8s ease;
+  margin: 0 0 1rem 1rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* When expanded */
+.paper-details.open {
+  max-height: 900px;
+}
+
+.paper-details p {
+  margin-bottom: 0.5rem;
+}
+
+.paper-details p:last-of-type {
+  margin-bottom: 1rem;
+}
+
+.paper-details a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.paper-figure {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: block;
+  border: 1px solid var(--muted);
+  border-radius: 4px;
+}
+
+/* Fade-in, delayed for figures */
+.figure-block {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.paper-details.open .figure-block {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+}
+
+
+.paper-figure {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--muted);
+  border-radius: 4px;
+  display: block;
+  margin: 0 auto;
+}
+
+.figure-caption {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@media (max-width: 600px) {
+  .name-line {
+    font-size: 2.5rem;
+  }
+  .motto {
+    font-size: 1rem;
+  }
+  nav {
+    margin: 0.5rem 0 0.5rem 0; /* reduce top and bottom margin */
+  }
+  .profile-image {
+    float: none;
+    display: block;
+    width: 150px;
+    margin: 2rem auto;
+  }
+}

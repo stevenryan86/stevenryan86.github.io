@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Research - Steven P. Ryan</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  
+    <!-- NEW: Fetch header early -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        fetch('header.html')
+          .then(response => response.text())
+          .then(data => {
+            const header = document.getElementById('main-header');
+            header.innerHTML = data;
+            header.classList.add('loaded');
+          })
+          .catch(error => console.error('Error loading header:', error));
+      });
+    </script>
+  </head>  
+<body>
+
+<div class="container">
+  <header id="main-header">
+    <div style="height: 100px;"></div> <!-- reserve header space -->
+  </header>
+
+  <div class="divider"></div>
+
+  <section id="working_papers">
+    <h2>Working Papers</h2>
+    
+     <!-- JMP -->
+     <div class="paper">
+      <button class="paper-title">Riding Out the Downturn: The Re-Employment Effects of an Unemployment Insurance Extension</button>
+      <div class="paper-details">
+        <a href="paper2.pdf" target="_blank">Download Paper</a>
+
+        <div class="figure-block">
+          <img src="figures/EI_weekly_difference.png" alt="Trade Impacts Graph" class="paper-figure"
+          style="width: 60%;">
+          <div class="figure-caption">Figure: Changes in income distribution after trade liberalization.</div>
+        </div>
+        <p><strong>Abstract:</strong> An empirical analysis of trade liberalization and its uneven effects across rural and urban regions.</p>
+      </div>
+    </div>
+
+    <!-- Paper 2 -->
+    <div class="paper">
+      <button class="paper-title">A Helping Hand Goes a Long Way: Long-Term Effects of Counselling and Support to Workfare Program Participants</button>
+      <div class="paper-details">
+        <p><em>Joint work with Gustavo Bobonis, Aneta Bonikowska, Philip Oreopoulos, and W. Craig Riddell.</em></p>
+    
+        <!-- Corrected download link -->
+        <a href="papers/SSP_Plus_paper.pdf" target="_blank">Download Paper</a>
+    
+        <!-- Figure -->
+        <div class="figure-block">
+          <img src="figures/plusminusreg_levels_annual_earnings.png" 
+               alt="Annual Earnings Results" 
+               class="paper-figure"
+               style="width: 60%;">
+          <div class="figure-caption">Figure: Annual earnings changes based on plus-minus regression estimates.</div>
+        </div>
+    
+        <p><strong>Abstract:</strong> We study the medium- and long-run impacts of the Canada Self-Sufficiency Project (SSP) Plus program, which randomly offered intensive employment support services for up to three years to long-term welfare recipients eligible for temporary earnings subsidies. We examine whether this intervention--designed to address both economic and psychosocial barriers to finding and retaining desirable employment--produced long-run changes in individuals' socioeconomic trajectories. We link study participants to their federal tax and employer-employee matched records for up to 20 years following random assignment. The intensive services treatment resulted in a 20-27 percent increase in participants' annual earnings over the 20-year period and sustained increases in full-time employment during the first decade post-intervention. As potential mechanisms, treated individuals engaged in more job search and job-to-job transitions and secured employment in higher-wage jobs and at higher-paying firms.</p>
+      </div>
+    </div>
+
+    <!-- Paper 3 -->
+    <div class="paper">
+      <button class="paper-title">Title of Paper Three</button>
+      <div class="paper-details">
+        <p><em>Solo-authored.</em></p>
+        <p><strong>Abstract:</strong> A theoretical model of endogenous growth driven by innovation in financial markets, with implications for long-run inequality.</p>
+
+        <a href="paper3.pdf" target="_blank">Download Paper</a>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="works_in_progress">
+    <h2>Work in Progress</h2>
+  </section>
+
+  <footer>&copy; 2025 Steven P. Ryan</footer>
+</div>
+
+<script>
+  const titles = document.querySelectorAll('.paper-title');
+
+  titles.forEach(title => {
+    title.addEventListener('click', () => {
+      titles.forEach(otherTitle => {
+        if (otherTitle !== title) {
+          const otherDetails = otherTitle.nextElementSibling;
+          if (otherDetails.classList.contains('open')) {
+            otherDetails.classList.remove('open'); // start collapsing
+            setTimeout(() => {
+              otherTitle.classList.remove('open'); // AFTER transition ends
+            }, 800); // Match your 0.8s transition time
+          }
+        }
+      });
+
+      // Toggle current paper
+      title.classList.toggle('open');
+      const details = title.nextElementSibling;
+      if (details.classList.contains('open')) {
+        details.classList.remove('open');
+      } else {
+        details.classList.add('open');
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Research - Steven P. Ryan</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  
+    <!-- NEW: Fetch header early -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        fetch('header.html')
+          .then(response => response.text())
+          .then(data => {
+            const header = document.getElementById('main-header');
+            header.innerHTML = data;
+            header.classList.add('loaded');
+          })
+          .catch(error => console.error('Error loading header:', error));
+      });
+    </script>
+  </head>
+<body>
+
+<div class="container">
+  <header id="main-header">
+    <div style="height: 100px;"></div> <!-- reserve header space -->
+  </header>
+
+  <div class="divider"></div>
+
+  <section id="cv">
+    <h2>Curriculum Vitae</h2>
+    <p>You can download my full CV <a href="cv_stevenpryan.pdf" target="_blank">here</a>.</p>
+  </section>
+
+  <footer>&copy; 2025 Steven P. Ryan</footer>
+</div>
+
+</body>
+</html>

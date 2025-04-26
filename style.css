@@ -209,7 +209,8 @@ footer {
 
 /* When expanded */
 .paper-details.open {
-  max-height: 900px;
+  max-height: 1400px;
+  transition: max-height 1.2s ease-in-out;
 }
 
 .paper-details p {

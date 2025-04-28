@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Research - Steven P. Ryan</title>
+    <title>Curriculum Vitae - Steven P. Ryan</title>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
   
-    <!-- NEW: Fetch header early -->
+    <!-- Fetch header early -->
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         fetch('header.html')
@@ -30,10 +30,14 @@
 
   <div class="divider"></div>
 
-  <section id="cv">
-    <h2>Curriculum Vitae</h2>
-    <p>You can download my full CV <a href="cv_stevenpryan.pdf" target="_blank">here</a>.</p>
-  </section>
+  <div class="page-content"> <!-- NEW: wrapper for fade + rise -->
+
+    <section id="cv">
+      <h2>Curriculum Vitae</h2>
+      <p>You can download my full CV <a href="cv_stevenpryan.pdf" target="_blank">here</a>.</p>
+    </section>
+
+  </div> <!-- End page-content -->
 
   <footer>&copy; 2025 Steven P. Ryan</footer>
 </div>

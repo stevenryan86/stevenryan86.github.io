@@ -1,7 +1,7 @@
 :root {
   --primary: #000;
   --accent: #0033cc;
-  --muted: #666; /* darker grey for better contrast */
+  --muted: #666;
 }
 
 body {
@@ -19,6 +19,12 @@ a {
   text-decoration: none;
 }
 
+/* Responsive images globally */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 .container {
   max-width: 850px;
   margin: 0 auto;
@@ -27,7 +33,7 @@ a {
 
 header {
   text-align: center;
-  margin-bottom: 2rem; /* reduce from 5rem */
+  margin-bottom: 2rem;
 }
 
 #main-header {
@@ -50,16 +56,16 @@ header {
   font-size: 1.2rem;
   color: var(--muted);
   margin-top: 1rem;
-  margin-bottom: 0.75rem; /* tighten spacing below */
+  margin-bottom: 0.75rem;
 }
 
 nav {
-  margin: 0.75rem 0; /* balances above and below ribbon */
+  margin: 0.75rem 0;
   font-family: 'EB Garamond', serif;
   font-size: 1rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-  display: inline-block; /* makes it center better with even breathing room */
+  display: inline-block;
 }
 
 nav a {
@@ -67,7 +73,7 @@ nav a {
   color: var(--primary);
   text-decoration: none;
   position: relative;
-  padding-bottom: 2px; /* breathing room for the underline */
+  padding-bottom: 2px;
 }
 
 nav a::after {
@@ -77,7 +83,7 @@ nav a::after {
   bottom: 0;
   width: 0%;
   height: 1px;
-  background-color: var(--muted); /* <-- now using your muted grey */
+  background-color: var(--muted);
   transition: width 0.3s ease;
 }
 
@@ -85,7 +91,7 @@ nav a:hover::after {
   width: 100%;
 }
 
-/***** General Links in Body Text with Animated Underline *****/
+/* General links in page body with hover underline */
 main a, section a, p a {
   position: relative;
   color: var(--primary);
@@ -108,22 +114,67 @@ main a:hover::after, section a:hover::after, p a:hover::after {
   width: 100%;
 }
 
+/* Global page content fade-in */
+.page-content {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeRise 1s ease forwards;
+}
+
+/* Divider line */
 .divider {
   width: 100%;
   height: 1px;
   background-color: var(--primary);
-  margin: 0.75rem 0 2rem 0; /* tight above, roomy below */
+  margin: 0.5rem 0 2rem 0; /* tighter above, roomier below */
 }
 
+/* Section styling (excluding special two-column sections) */
+section:not(.two-column-section) {
+  margin-bottom: 2rem;
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+  clear: both;
+}
+
+section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Two-column layout for About (and future two-column sections) */
+.two-column-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  margin-bottom: 2rem; /* consistent with other sections */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeRise 1s ease forwards;
+}
+
+.about-text {
+  flex: 1;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  letter-spacing: 0.3px;
+}
+
+/* Profile image */
 .profile-image {
-  float: right;
-  width: 180px;
-  height: auto;
-  margin-left: 2rem;
-  margin-bottom: 1rem;
-  object-fit: cover;
+  width: 260px; /* bigger width */
+  height: auto; /* maintain aspect ratio */
+  max-height: 320px; /* optional: keeps it from getting too tall */
+  object-fit: contain; /* no aggressive cropping */
+  object-position: center;
+  border-radius: 0;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  margin: 0;
 }
 
+/* Headers */
 h2 {
   font-size: 1.75rem;
   font-weight: normal;
@@ -143,27 +194,17 @@ h2::after {
   margin-top: 0.5rem;
 }
 
-section {
-  margin-bottom: 2rem;
-  animation: fadeIn 0.8s ease forwards;
-  opacity: 0;
-  clear: both;
-}
-
-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
+/* Footer */
 footer {
   font-size: 0.8rem;
   color: var(--muted);
   text-align: center;
   border-top: 1px solid #ccc;
-  padding-top: 2rem;
+  margin-top: 2rem; /* breathing room between content and footer line */
+  padding-top: 1rem; /* smaller breathing inside footer */
 }
 
+/* Expandable paper sections */
 .paper-title {
   font-family: 'EB Garamond', serif;
   font-size: 1.2rem;
@@ -176,12 +217,6 @@ footer {
   color: var(--primary);
   position: relative;
 }
-
-.paper-title.open::after {
-  content: " –";
-  animation: fadeIn 0.4s ease forwards;
-}
-
 
 .paper-title::after {
   content: " +";
@@ -197,7 +232,6 @@ footer {
   opacity: 1;
 }
 
-
 .paper-details {
   overflow: hidden;
   max-height: 0;
@@ -207,7 +241,6 @@ footer {
   color: var(--muted);
 }
 
-/* When expanded */
 .paper-details.open {
   max-height: 2000px;
   transition: max-height 1.2s ease-in-out;
@@ -227,17 +260,7 @@ footer {
   font-size: 0.95rem;
 }
 
-.paper-figure {
-  max-width: 100%;
-  height: auto;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  display: block;
-  border: 1px solid var(--muted);
-  border-radius: 4px;
-}
-
-/* Fade-in, delayed for figures */
+/* Figure handling */
 .figure-block {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
@@ -255,7 +278,6 @@ footer {
   transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
 }
 
-
 .paper-figure {
   max-width: 100%;
   height: auto;
@@ -271,24 +293,47 @@ footer {
   margin-top: 0.5rem;
 }
 
+/* Animations */
 @keyframes fadeIn {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
-@media (max-width: 600px) {
+@keyframes fadeRise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
   .name-line {
     font-size: 2.5rem;
   }
+
   .motto {
     font-size: 1rem;
   }
+
   nav {
-    margin: 0.5rem 0 0.5rem 0; /* reduce top and bottom margin */
+    margin: 0.5rem 0;
   }
+
+  .two-column-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .about-text {
+    max-width: 100%;
+  }
+
   .profile-image {
-    float: none;
-    display: block;
-    width: 150px;
-    margin: 2rem auto;
+    width: 180px;
+    height: 180px;
+    margin: 2rem auto 0;
   }
 }

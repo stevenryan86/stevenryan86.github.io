@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Research - Steven P. Ryan</title>
+    <title>Steven P. Ryan</title>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-  
-    <!-- NEW: Fetch header early -->
+
+    <!-- Fetch header early -->
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         fetch('header.html')
@@ -30,13 +30,24 @@
 
   <div class="divider"></div>
 
-  <section id="about">
-    <img src="figures/portrait_for_website.jpg" alt="Steven P. Ryan" class="profile-image">
-    <h2>About</h2>
-    <p>I'm an applied microeconomist who's interested in public and labour economics. I will be on the 2025-26 economics job market. </p>
-  </section>
+  <div class="page-content">
 
-  
+    <section class="two-column-section">
+      <div class="about-text">
+        <h2>About</h2>
+        <p>I am an applied microeconomist who uses experimental and quasi-experimental methods to study how programs and policies influence behavior and outcomes. My research focuses on public and labour economics, with particular interests in income support policy and active labour market programs. I will be on the 2025–26 economics job market.</p>
+
+        <p>Before my Ph.D., I worked with the Government of Canada, the Government of Ontario, and the Abdul Latif Jameel Poverty Action Lab (J-PAL) North America, partnering with public and non-profit organizations to design evaluations, conduct field experiments, and generate insights from real-world data.</p>
+        
+        <p>I am motivated by a broader interest in applying causal inference and empirical analysis to evaluate interventions and to inform the design of more effective programs, products, and policies.</p>
+        
+      </div>
+
+      <img src="figures/portrait_for_website.jpg" alt="Steven P. Ryan" class="profile-image">
+    </section>
+
+  </div> <!-- End page-content -->
+
   <footer>&copy; 2025 Steven P. Ryan</footer>
 </div>
 

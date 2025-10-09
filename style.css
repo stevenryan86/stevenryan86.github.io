@@ -162,7 +162,7 @@ section::after {
   letter-spacing: 0.3px;
 }
 
-/* Profile image */
+/* Profile image (desktop defaults) */
 .profile-image {
   width: 340px;          /* larger desktop version */
   height: auto;
@@ -172,15 +172,6 @@ section::after {
   border-radius: 0;
   box-shadow: none;
   margin: 0;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .profile-image {
-    width: 320px;        /* increased from 180px → 320px for mobile */
-    height: auto;
-    margin: 2rem auto 0;
-  }
 }
 
 /* Headers */
@@ -316,7 +307,7 @@ footer {
   }
 }
 
-/* Mobile responsiveness */
+/* Mobile responsiveness (single block) */
 @media (max-width: 768px) {
   .name-line {
     font-size: 2.5rem;
@@ -340,9 +331,11 @@ footer {
     max-width: 100%;
   }
 
+  /* Make the portrait big on mobile */
   .profile-image {
-    width: 180px;
-    height: 180px;
+    width: min(92vw, 520px); /* fills small screens but caps at a nice size */
+    max-height: none;        /* allow it to grow beyond desktop cap */
+    height: auto;
     margin: 2rem auto 0;
   }
 }

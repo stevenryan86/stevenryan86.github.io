@@ -164,10 +164,10 @@ section::after {
 
 /* Profile image */
 .profile-image {
-  width: 340px;          /* increased from 260px */
-  height: auto;          /* maintain aspect ratio */
-  max-height: 420px;     /* allows a taller portrait */
-  object-fit: contain;   /* prevent cropping */
+  width: 340px;          /* larger desktop version */
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
   object-position: center;
   border-radius: 0;
   box-shadow: none;
@@ -177,7 +177,7 @@ section::after {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .profile-image {
-    width: 240px;        /* increased from 180px for better visibility on phones */
+    width: 320px;        /* increased from 180px → 320px for mobile */
     height: auto;
     margin: 2rem auto 0;
   }

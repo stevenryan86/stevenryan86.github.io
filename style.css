@@ -164,14 +164,23 @@ section::after {
 
 /* Profile image */
 .profile-image {
-  width: 260px; /* bigger width */
-  height: auto; /* maintain aspect ratio */
-  max-height: 320px; /* optional: keeps it from getting too tall */
-  object-fit: contain; /* no aggressive cropping */
+  width: 340px;          /* increased from 260px */
+  height: auto;          /* maintain aspect ratio */
+  max-height: 420px;     /* allows a taller portrait */
+  object-fit: contain;   /* prevent cropping */
   object-position: center;
-  border-radius: 0; /* no rounded corners */
-  box-shadow: none; /* no shading */
+  border-radius: 0;
+  box-shadow: none;
   margin: 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .profile-image {
+    width: 240px;        /* increased from 180px for better visibility on phones */
+    height: auto;
+    margin: 2rem auto 0;
+  }
 }
 
 /* Headers */
